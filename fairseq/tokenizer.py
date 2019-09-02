@@ -8,8 +8,10 @@ import re
 SPACE_NORMALIZER = re.compile(r"\s+")
 
 
-def tokenize_line(line):
+def tokenize_line(line, character_level: bool = True):
     line = SPACE_NORMALIZER.sub(" ", line)
     line = line.strip()
-    #return line.split()
-    return list(line)
+    if character_level:
+      return list(line)
+    else:
+      return line.split()
